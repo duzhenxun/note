@@ -12,4 +12,10 @@ iptables -t nat -nvL
 
 iptables -L -n --line-number
 
+安装dig
+yum install bind-utils
+dig @114.114.114.114 baidu.com
+
 ````
+````
+`
