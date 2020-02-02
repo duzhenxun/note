@@ -58,4 +58,30 @@ dig @114.114.114.114 baidu.com
 ;; connection timed out; no servers could be reached
 ```
 
+查看
+iptables -t filter -nvL
+```language
+Chain INPUT (policy ACCEPT 2899 packets, 177K bytes)
+ pkts bytes target     prot opt in     out     source               destination         
 
+Chain FORWARD (policy DROP 44 packets, 2962 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 2562 packets, 529K bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    4   264 DROP       udp  --  *      *       0.0.0.0/0            114.114.114.114     
+
+Chain DOCKER (0 references)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain DOCKER-ISOLATION-STAGE-1 (0 references)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain DOCKER-ISOLATION-STAGE-2 (0 references)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain DOCKER-USER (0 references)
+ pkts bytes target     prot opt in     out     source               destination 
+```
+删除丢包规则
+iptables -t filter -D OUTPUT 1
