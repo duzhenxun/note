@@ -114,3 +114,17 @@ Chain DOCKER-USER (0 references)
 ```
 删除丢包规则
 iptables -t filter -D OUTPUT 1
+
+
+```language
+ cat /proc/net/nf_conntrack
+ipv4     2 tcp      6 299 ESTABLISHED src=27.189.141.216 dst=172.17.2.236 sport=23213 dport=22 src=172.17.2.236 dst=27.189.141.216 sport=22 dport=23213 [ASSURED] mark=0 zone=0 use=2
+ipv4     2 icmp     1 29 src=27.189.141.216 dst=172.17.2.236 type=8 code=0 id=23222 src=172.17.2.236 dst=27.189.141.216 type=0 code=0 id=23222 mark=0 zone=0 use=2
+ipv4     2 tcp      6 431999 ESTABLISHED src=172.17.2.236 dst=100.100.30.25 sport=43640 dport=80 src=100.100.30.25 dst=172.17.2.236 sport=80 dport=43640 [ASSURED] mark=0 zone=0 use=2
+ipv4     2 tcp      6 23185 ESTABLISHED src=190.237.143.89 dst=172.17.2.236 sport=50025 dport=4001 src=172.17.2.236 dst=190.237.143.89 sport=4001 dport=50025 [ASSURED] mark=0 zone=0 use=2
+ipv4     2 tcp      6 41 TIME_WAIT src=10.10.10.1 dst=10.10.10.101 sport=53506 dport=443 src=10.10.10.101 dst=10.10.10.1 sport=443 dport=53506 [ASSURED] mark=0 zone=0 use=2
+ipv4     2 tcp      6 55 SYN_RECV src=51.81.119.9 dst=172.17.2.236 sport=25424 dport=80 src=172.17.2.236 dst=51.81.119.9 sport=80 dport=25424 mark=0 zone=0 use=2
+ipv4     2 tcp      6 41 TIME_WAIT src=66.249.71.80 dst=172.17.2.236 sport=65480 dport=443 src=172.17.2.236 dst=66.249.71.80 sport=443 dport=65480 [ASSURED] mark=0 zone=0 use=2
+
+```
+
