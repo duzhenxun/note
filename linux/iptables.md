@@ -1,9 +1,37 @@
-````
+
 route -n
 
 arp -a
 
+### 查看规则
 iptables -t nat -nvL
+
+```language
+Chain PREROUTING (policy ACCEPT 311 packets, 19028 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+  68M 3825M DOCKER     all  --  *      *       0.0.0.0/0            0.0.0.0/0            ADDRTYPE match dst-type LOCAL
+
+Chain INPUT (policy ACCEPT 87 packets, 3656 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 32 packets, 2215 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 DOCKER     all  --  *      *       0.0.0.0/0           !127.0.0.0/8          ADDRTYPE match dst-type LOCAL
+
+Chain POSTROUTING (policy ACCEPT 28 packets, 1951 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 MASQUERADE  all  --  *      !docker0  172.18.0.0/16        0.0.0.0/0           
+9588K  572M MASQUERADE  all  --  *      !br-dfc0e0a09d43  10.10.0.0/16         0.0.0.0/0           
+    0     0 MASQUERADE  tcp  --  *      *       10.10.10.101         10.10.10.101         tcp dpt:22
+
+Chain DOCKER (2 references)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 RETURN     all  --  docker0 *       0.0.0.0/0            0.0.0.0/0           
+21358 1281K RETURN     all  --  br-dfc0e0a09d43 *       0.0.0.0/0            0.0.0.0/0           
+   64  3300 DNAT       tcp  --  !br-dfc0e0a09d43 *       0.0.0.0/0            0.0.0.0/0            tcp dpt:32769 to:10.10.10.101:22
+➜ 
+```
+
 
 添加
 ~ iptables -t nat -A OUTPUT -p tcp -d 2.2.2.2 --dport 12722 -j DNAT --to-destination 10.10.10.101:22
@@ -12,11 +40,12 @@ iptables -t nat -nvL
 
 iptables -L -n --line-number
 
+#### DNS查看
 安装dig
 yum install bind-utils
 dig @114.114.114.114 baidu.com
 
-````
+
 
 
 安装dig
