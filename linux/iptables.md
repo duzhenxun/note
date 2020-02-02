@@ -115,9 +115,10 @@ Chain DOCKER-USER (0 references)
 删除丢包规则
 iptables -t filter -D OUTPUT 1
 
-
+TCP,UDP的连接都记录在内核中
+cat /proc/net/nf_conntrack
 ```language
- cat /proc/net/nf_conntrack
+ 
 ipv4     2 tcp      6 299 ESTABLISHED src=27.189.141.216 dst=172.17.2.236 sport=23213 dport=22 src=172.17.2.236 dst=27.189.141.216 sport=22 dport=23213 [ASSURED] mark=0 zone=0 use=2
 ipv4     2 icmp     1 29 src=27.189.141.216 dst=172.17.2.236 type=8 code=0 id=23222 src=172.17.2.236 dst=27.189.141.216 type=0 code=0 id=23222 mark=0 zone=0 use=2
 ipv4     2 tcp      6 431999 ESTABLISHED src=172.17.2.236 dst=100.100.30.25 sport=43640 dport=80 src=100.100.30.25 dst=172.17.2.236 sport=80 dport=43640 [ASSURED] mark=0 zone=0 use=2
