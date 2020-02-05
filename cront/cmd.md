@@ -35,7 +35,7 @@ func main()  {
 
 ```
 ### 例子2
-
+模拟调用cmd时，杀死bash进程
 ```golang
 package main
 
