@@ -7,5 +7,9 @@ fork() 创建子进程 fd[1]被继承到子进程
 dup2() 重定向子进程 stdout/stderr到fd[1]
 exec() 在当前进程内，加载并执行二进制程序
 
-
-*/5 * * * * echo hello
+Cron基本格式
+|分|时|日|月|周|shell命令
+|-|-|-|-|-|-|
+|*/5|*|*|*|*|echo hello >/tmp/x.log|
+|1-5|*|*|*|*|echo /usr/bin/python /data/x.py|
+|0|10,12|*|*|*|echo hello >/tmp/x.log|
