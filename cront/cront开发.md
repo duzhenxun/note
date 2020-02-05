@@ -12,4 +12,6 @@ Cron基本格式
 |-|-|-|-|-|-|
 |*/5|*|*|*|*|echo hello >/tmp/x.log|
 |1-5|*|*|*|*|echo /usr/bin/python /data/x.py|
-|0|10,12|*|*|*|echo hello >/tmp/x.log|
+|0|10,22|*|*|*|echo hello|tail -1|
+
+go开源Cr
