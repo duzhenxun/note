@@ -14,7 +14,9 @@
 #### etcd与Raft的关系
 - Raft是强一致的集群日志同步算法
 - etcd是一个分布式KV存储
-- etcd利用raft
-
+- etcd利用raft算法在集群中同步key-value
+#### quor
 ### 对比
 ![title](https://raw.githubusercontent.com/xs25cn/images/master/note/2020/02/25/1582610005666-1582610005708.png)
+
+aaa
