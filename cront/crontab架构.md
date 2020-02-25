@@ -51,8 +51,12 @@
   - {jobName:任务名，command:shell命令，err:执行报错,output:执行输出,startTime:开始时间，endTime:结束时间}
 - 任务控制HTTP接口：强制结束任务接口
   - etcd /cron/killer/任务名
-  - master 将要结束任务写到 /cron/killer/下面，worker端监听到进行杀死
-  - worke下会监听/cron/killer/下的put修改操作
+  - master 将要结束任务写到 /cron/killer/下面，worker端监听到进行杀死操作
 - 实现web管理页面，前后端分离
 
+### 2、Worker功能
+- 任务同步：监听etcd中 /cron/jobs/目录变化
+- 任务调度：基于cron表式达计算，触发过期任务
+- 任务执行：协程池并发执行多任务，基于etcd分布式锁抢占
+- 日志保存：捕获任务执行
 
