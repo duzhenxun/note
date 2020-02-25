@@ -35,3 +35,17 @@
 - [ ] 搭建etcd,熟悉命令行操作
 - [ ] 使用go调用etcd的put/get/delete/lease/watch方法
 - [ ] 使用txn事务功能，实现分布式乐观锁
+
+#### 命令行使用etcd
+```shell
+etcdctl put /crontab/jobs/job1 job1
+etcdctl put /crontab/jobs/job2 job2
+etcdctl get /crontab/jobs/job1
+etcdctl get /crontab/jobs/ --prefix
+etcdctl delete /crontab/jobs/job1
+etcdctl del /crontab/jobs/job1
+etcdctl get /crontab/jobs/job1
+
+11651  etcdctl put /crontab/jobs/job1 job11
+11652  etcdctl put /crontab/jobs/job1 job11111
+```
