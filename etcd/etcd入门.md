@@ -29,3 +29,7 @@
 - 基于租约机制实现key的TTL过期
 - mvcc多版本控制
 - watch机制 监听kv变化
+  - sdk监听某个key,从n版本监听。
+  - watcher 推送给sdk版本后的变化
+### 实践任务
+- 搭建etcd
