@@ -32,4 +32,6 @@
   - sdk监听某个key,从n版本监听。
   - watcher 推送给sdk版本后的变化
 ### 实践任务
-- 搭建etcd
+- [ ] 搭建etcd,熟悉命令行操作
+- [ ] 使用go调用etcd的put/get/delete/lease/watch方法
+- [ ] 使用txn事务功能，实现分布式乐观锁
