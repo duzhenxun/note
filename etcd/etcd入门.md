@@ -53,3 +53,7 @@ etcdctl put /crontab/jobs/job1 job11111
 //对key修改后，另一个终端会监听到变化
 ```
 #### 2、使用go调用etcd
+简单设置
+```golang
+
+```
