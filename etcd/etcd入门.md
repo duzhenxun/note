@@ -31,12 +31,12 @@
 - watch机制 监听kv变化
   - sdk监听某个key,从n版本监听。
   - watcher 推送给sdk版本后的变化
-### 实践任务
+### 三、实践任务
 - [ ] 搭建etcd,熟悉命令行操作
 - [ ] 使用go调用etcd的put/get/delete/lease/watch方法
 - [ ] 使用txn事务功能，实现分布式乐观锁
 
-#### 命令行使用etcd
+#### 1、命令行使用etcd
 ```shell
 etcdctl put /crontab/jobs/job1 job1
 etcdctl put /crontab/jobs/job2 job2
@@ -45,7 +45,11 @@ etcdctl get /crontab/jobs/ --prefix
 etcdctl delete /crontab/jobs/job1
 etcdctl del /crontab/jobs/job1
 etcdctl get /crontab/jobs/job1
+//再开一个终端进行监听
+etcdctl watch "/crontab/jobs/" --prefix
 
-11651  etcdctl put /crontab/jobs/job1 job11
-11652  etcdctl put /crontab/jobs/job1 job11111
+etcdctl put /crontab/jobs/job1 job11
+etcdctl put /crontab/jobs/job1 job11111
+//对key修改后，另一个终端会监听到变化
 ```
+#### 2、使用go调用etcd
