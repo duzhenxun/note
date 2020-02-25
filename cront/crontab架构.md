@@ -61,5 +61,11 @@
 - 日志保存：捕获任务执行输出，保存到DB中
 ![title](https://raw.githubusercontent.com/xs25cn/images/master/note/2020/02/25/1582644546178-1582644546191.png)
 
-#### 监听协程
-- 利用watch API,监听/cron
+#### 2.1 监听协程
+- 利用watch API,监听/cron/jobs 和/cron/killer/ 目标的变化
+- 将变化事件通过channel推送给调度协程，更新内存中的任务信息
+#### 2.2 调度协程
+- 监听任务变更event,更新内存维护的任务列表
+- 检查任务cron表达式，扫描到期任务，交给执行协程运行
+- 监听任务控制event,强制中断正在执行中的子进程
+- 监听任务执行result,更新内存中任务状态，投递执行日志
