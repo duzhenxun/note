@@ -13,4 +13,9 @@
 - Master下发任务RPC异常，导致Master与Worer状态不一致
 - Worker上报任务RPC异常，导致Master状态信息落后
 - 状态不一致：Master下发任务给work1异常，实际work1收到并执行开始
-- 并发执行：Master重试下发任务给w
+- 并发执行：Master重试下发任务给work2,结果work2与work1同时执行一个任务
+- 状态丢失：Master更新zookeeper中任务状态异常，此时Master宕机切换Standby,任务仍旧处理旧状态
+- 分布系统中，异常是无处不在的，凡需要经过网络的操作，都可能出现异常
+- 将应用状态放在存储中，必然会出现内存与DB状态不一致
+- 应用直接利用raft管理状态，可以确保最终一致，但成本太高
+- 
