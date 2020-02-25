@@ -115,8 +115,20 @@ func main(){
 
 ```
 ##### 接前缀获取
-```language
-
+```golang
+if getResp,err = kv.Get(context.TODO(),"/cron/jobs/",clientv3.WithPrefix());err!=nil{
+		fmt.Println(err)
+	}else{
+		for k,v:=range getResp.Kvs{
+			fmt.Println(k,string(v.Key),string(v.Value))
+		}
+	}
+```
+运行结果
+```shell
+0 /cron/jobs/job1 job1,ado
+1 /cron/jobs/job2 job2,zhangsa
 ```
 
+##### 
 
