@@ -44,9 +44,11 @@
 ## 二、功能设计
 ### 1、Master功能
 - 任务管理HTTP接口：任务的增删改查
-  - 写入到etcd中 /cron/jobs/*** 
+  - 写入到etcd中 
+  -  /cron/jobs/任务名 -> {name:任务名，command:shell命令,cronExpr:cron表达式}
 - 任务日志HTTP接口：查看任务执行日志
   - 写入到db中
+  - {jobName:任务名，command:shell命令，err:执行报错,output:执行输出,startTime:开始时间，end}
 - 任务控制HTTP接口：强制结束任务接口
   - etcd /cron/killer/***
 - 实现web管理页面，前后端分离
