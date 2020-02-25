@@ -1,4 +1,4 @@
-## 一、常用架构
+## 一、分布式crontab架构
 ### 1、传统crontab的缺点
 - 机器故障，任务停止调度
 - 任务数量多，单机硬件资源耗尽
@@ -35,10 +35,14 @@
 - 架构简化，减少有状态服务，秉承最终一致
 - 架构折中，确保异常可以被程序自我修复
 
-## 二、整体架构
-![title](https://raw.githubusercontent.com/xs25cn/images/master/note/2020/02/25/1582643440107-1582643440113.png)
-
+### 8、整体架构
 - 利用etcd同步全量任务列表到所有worker节点
 - 每个worker独立调度全量任务，无需与master产生直接RPC
 - 各个Worker利用分布式锁抢占，解决并发调度相同任务的问题
-- 
+![title](https://raw.githubusercontent.com/xs25cn/images/master/note/2020/02/25/1582643440107-1582643440113.png)
+
+## 二、功能设计
+### 1、Master功能
+- 任务管理HTTP接口：增删改查任务
+- 任务日志HTTP接口：查看任务执行晶
+
