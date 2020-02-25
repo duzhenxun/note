@@ -58,5 +58,8 @@
 - 任务同步：监听etcd中 /cron/jobs/目录变化
 - 任务调度：基于cron表式达计算，触发过期任务
 - 任务执行：协程池并发执行多任务，基于etcd分布式锁抢占
-- 日志保存：捕获任务执行
+- 日志保存：捕获任务执行输出，保存到DB中
+![title](https://raw.githubusercontent.com/xs25cn/images/master/note/2020/02/25/1582644546178-1582644546191.png)
 
+#### 监听协程
+- 利用watch API,监听/cron
