@@ -1,3 +1,6 @@
+### 对比
+![title](https://raw.githubusercontent.com/xs25cn/images/master/note/2020/02/25/1582610005666-1582610005708.png)
+
 ### etcd 支撑
 - 服务发现
 - 集群状态存储
@@ -15,8 +18,11 @@
 - Raft是强一致的集群日志同步算法
 - etcd是一个分布式KV存储
 - etcd利用raft算法在集群中同步key-value
-#### quor
-### 对比
-![title](https://raw.githubusercontent.com/xs25cn/images/master/note/2020/02/25/1582610005666-1582610005708.png)
+### quorum模型
+集群需要2N+1个节点
+当leader复制给2N+1个节点后本地提交，返回客户端
+![title](https://raw.githubusercontent.com/xs25cn/images/master/note/2020/02/25/1582610351731-1582610351736.png)
+
+
 
 aaa
