@@ -472,7 +472,7 @@ func main() {
 221
 duzhenxun
 ```
-### 8、利用上面所学，实现一个简单的分布式
+### 8、利用上面所学，实现一个简单的分布式锁
 ```golang
 package main
 
@@ -564,6 +564,7 @@ func main() {
 
 ```
 开启2个客户端看看是否只有一个可以处理业务
+- 客户端A
 ```shell
 ➜  简单的分布式 git:(master) ✗ go run main.go
 收到租约
@@ -575,6 +576,14 @@ func main() {
 收到租约
 业务处理完成，释放锁
 ```
+- 客户端B
+```shell
+➜  简单的分布式 git:(master) ✗ go run main.go
+收到租约
+锁被占用: duzhenxun
+
+```
+
 
 
 
