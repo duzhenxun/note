@@ -48,9 +48,11 @@
   -  /cron/jobs/任务名 -> {name:任务名，command:shell命令,cronExpr:cron表达式}
 - 任务日志HTTP接口：查看任务执行日志
   - 写入到db中
-  - {jobName:任务名，command:shell命令，err:执行报错,output:执行输出,startTime:开始时间，end}
+  - {jobName:任务名，command:shell命令，err:执行报错,output:执行输出,startTime:开始时间，endTime:结束时间}
 - 任务控制HTTP接口：强制结束任务接口
-  - etcd /cron/killer/***
+  - etcd /cron/killer/任务名
+  - master 将要结束任务写到 /cron/killer/下面，worker端监听到进行杀死
+  - worke下会监听/cron/killer/下的put修改操作
 - 实现web管理页面，前后端分离
 
 
