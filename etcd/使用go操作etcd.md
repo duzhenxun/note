@@ -1,8 +1,5 @@
-#### 2、使用go调用etcd
-
-##### 简单添加与获取代码
 这里我主要练习使用go调用etcd的put/get/delete/lease/watch方法
-
+### 1、put,get使用
 ```golang
 package main
 
@@ -62,7 +59,7 @@ func main(){
 /cron/job1 的值是: [key:"/cron/job1" create_revision:20 mod_revision:21 version:2 value:"job1,ado" ]
 
 ```
-##### 接前缀获取
+### 2、get 前缀获取
 ```golang
 package main
 
@@ -110,7 +107,7 @@ func main()  {
 1 /cron/jobs/job2 job2,zhangsa
 ```
 
-##### 删除操作
+### 3、delete删除操作
 ```golang
 package main
 
