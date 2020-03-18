@@ -1,5 +1,7 @@
 #### GOOS=linux GOARCH=amd64 go build hello.go
 
+#### CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=5 go build
+
 上面这段代码直接在命令控制台里面运行就可以生成64位linux的可执行程序。
 参数解析
 这里用到了两个变量：
